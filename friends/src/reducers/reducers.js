@@ -22,6 +22,7 @@ export const getFriends = (state = initialState, action) => {
                 fetchingFriends: true,
             };
         case types.FETCH_SUCCESS:
+            console.log("THIS IS THE FIRST STATE", action.payload)
             return {
                 ...state,
                 fetchingFriends: false,
@@ -34,13 +35,6 @@ export const getFriends = (state = initialState, action) => {
                 fetchingFriends: false,
                 error: action.payload,
             }
-        default:
-            return state;
-        }
-    }
-    
-export const addFriends = (state = initialState, action) => {
-    switch(action.type) {
         case types.ADDING_FRIEND:
             return {
                 ...state,
@@ -60,8 +54,8 @@ export const addFriends = (state = initialState, action) => {
             }
         default:
             return state;
+        }
     }
-}
 export default combineReducers({
-    getFriends, addFriends
+    getFriends
 })

@@ -47,9 +47,9 @@ class FriendForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        friends: state.addFriends.friends,
-        savingFriends: state.addFriends.friends,
-        friendsSaved: state.addFriends.friendsSaved, 
+        friends: state.getFriends.friends,
+        savingFriends: state.getFriends.friends,
+        friendsSaved: state.getFriends.friendsSaved, 
     }
 }
 
