@@ -42,11 +42,22 @@ export const getFriends = (state = initialState, action) => {
 export const addFriends = (state = initialState, action) => {
     switch(action.type) {
         case types.ADDING_FRIEND:
-            return console.log('ADDING FRIEND')
+            return {
+                ...state,
+                savingFriends: true,
+            }
         case types.ADDING_FRIEND_SUCCESS:
-            return console.log('ADDING FRIEND SUCCESS!')
+            return {
+                ...state,
+                savingFriends: false,
+                friendsSaved: true,
+                friends: action.payload,
+            }
         case types.ADDING_FRIEND_FAILURE:
-            return console.log('ADDING FRIEND FAILURE!')
+            return {
+                savingFriends: false,
+                error: action.payload,
+            }
         default:
             return state;
     }

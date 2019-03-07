@@ -19,7 +19,6 @@ export const fetchFriends = () => dispatch => {
             'Authorization': token
         }})
     request.then(res =>{
-            console.log(res.data)
             dispatch({type: FETCH_SUCCESS, payload: res.data})
         })
         .catch(err => {
@@ -29,14 +28,22 @@ export const fetchFriends = () => dispatch => {
 }
 
 export const postFriends = (friend) => dispatch => {
+    console.log("MY FRIEND IS", friend)
     dispatch({ type: ADDING_FRIEND});
-    const request = axios.post(`http://localhost:5000/api/friends`, { friend })
+
+    const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+    }
+    const request = axios.post(`http://localhost:5000/api/friends`, friend, {headers: headers})
     request.then(res => {
             console.log(res.data)
-            dispatch({ type: ADDING_FRIEND_SUCCESS, payload: res.data.results })
+            dispatch({ type: ADDING_FRIEND_SUCCESS, payload: res.data })
         })
         .catch(err => {
             console.log("Something went wrong when trying to ADD a friend!");
             dispatch({type: ADDING_FRIEND_FAILURE, payload: err})
         })
 }
+
+  
