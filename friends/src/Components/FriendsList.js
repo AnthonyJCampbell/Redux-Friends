@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-import { fetchFriends } from './../actions/actions'
+import { fetchFriends, postFriends } from './../actions/actions'
 
 class FriendList extends Component {
     componentDidMount() {
@@ -12,7 +12,15 @@ class FriendList extends Component {
         console.log(this.props.friends)
         return (
             <div>
-                This is the friend LIST
+                <h2>LOOK AT ALL MY FRIENDS!</h2>
+                {this.props.friends.map(friend => {
+                    return (
+                        <div key={friend.id}>
+                            <h3>{friend.name} ({friend.age})</h3>
+                            <h4>{friend.email}</h4>
+                        </div>
+                    )
+                })}
             </div>
         );
     }
@@ -21,15 +29,15 @@ class FriendList extends Component {
 
 const mapStateToProps = state => {
     return {
-        fetchingFriends: state.fetchingFriends,
-        friends: state.friends,
+        fetchingFriends: state.getFriends.fetchingFriends,
+        friends: state.getFriends.friends,
     }
 }
 
 function mapDispatchToProps(dispatch) {
-
     return bindActionCreators({
         fetchFriends,
+        postFriends,
     }, dispatch);
 }
 

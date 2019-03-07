@@ -20,7 +20,7 @@ export const fetchFriends = () => dispatch => {
         }})
     request.then(res =>{
             console.log(res.data)
-            dispatch({type: FETCH_SUCCESS, payload: res.data.results})
+            dispatch({type: FETCH_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log("Something broke when trying to fetch your friends!")

@@ -2,17 +2,16 @@ import * as types from './../actions/actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
-    name: "John",
-    // fetchingFriends: false,
-    // friendsFetched: false,
-    // friendsSaved: false,
-    // savingFriends: false,
-    // updatingFriend: false,
-    // friendUpdated: false,
-    // deletingFriend: false,
-    // friendDeleted: false,
-    // friends: [],
-    // error: null
+    fetchingFriends: false,
+    friendsFetched: false,
+    friendsSaved: false,
+    savingFriends: false,
+    updatingFriend: false,
+    friendUpdated: false,
+    deletingFriend: false,
+    friendDeleted: false,
+    friends: [],
+    error: null
 }
 
 export const getFriends = (state = initialState, action) => {
