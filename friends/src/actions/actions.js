@@ -10,9 +10,10 @@ export const ADDING_FRIEND_FAILURE = 'ADDING_FRIEND_FAILURE'
 
 // ACTION CREATORS
 export const fetchFriends = () => dispatch => {
+    
     dispatch({ type: FETCHING_FRIEND });
-    axios.get(`http://localhost:5000/api/friends`)
-        .then(res =>{
+    const request = axios.get(`http://localhost:5000/api/friends`)
+    request.then(res =>{
             console.log(res.data)
             dispatch({type: FETCH_SUCCESS, payload: res.data.results})
         })
@@ -24,8 +25,8 @@ export const fetchFriends = () => dispatch => {
 
 export const postFriends = (friend) => dispatch => {
     dispatch({ type: ADDING_FRIEND});
-    axios.post(`http://localhost:5000/api/friends`, { friend })
-        .then(res => {
+    const request = axios.post(`http://localhost:5000/api/friends`, { friend })
+    request.then(res => {
             console.log(res.data)
             dispatch({ type: ADDING_FRIEND_SUCCESS, payload: res.data.results })
         })
