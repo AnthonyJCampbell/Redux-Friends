@@ -16,7 +16,7 @@ const initialState = {
 
 export const getFriends = (state = initialState, action) => {
     switch(action.type) {
-        case types.FETCHING:
+        case types.FETCHING_FRIEND:
             return console.log('FETCHING')
         default:
             return state;
