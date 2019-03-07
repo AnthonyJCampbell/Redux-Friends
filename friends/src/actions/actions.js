@@ -8,11 +8,16 @@ export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const ADDING_FRIEND_SUCCESS = 'ADDING_FRIEND_SUCCESS';
 export const ADDING_FRIEND_FAILURE = 'ADDING_FRIEND_FAILURE'
 
+const token = 'eyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NjYwYmQifQ';
+
 // ACTION CREATORS
 export const fetchFriends = () => dispatch => {
-    
     dispatch({ type: FETCHING_FRIEND });
-    const request = axios.get(`http://localhost:5000/api/friends`)
+    const request = axios.get(`http://localhost:5000/api/friends`, { 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }})
     request.then(res =>{
             console.log(res.data)
             dispatch({type: FETCH_SUCCESS, payload: res.data.results})

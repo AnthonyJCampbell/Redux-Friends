@@ -9,7 +9,7 @@ class FriendList extends Component {
     }
     
     render() {
-        console.log(this.props.fetchFriends)
+        console.log(this.props.friends)
         return (
             <div>
                 This is the friend LIST

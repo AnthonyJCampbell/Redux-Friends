@@ -18,11 +18,23 @@ const initialState = {
 export const getFriends = (state = initialState, action) => {
     switch(action.type) {
         case types.FETCHING_FRIEND:
-            return console.log('FETCHING')
+            return {
+                ...state,
+                fetchingFriends: true,
+            };
         case types.FETCH_SUCCESS:
-            return console.log('FETCHING SUCCESS!')
+            return {
+                ...state,
+                fetchingFriends: false,
+                friendsFetched: true,
+                friends: action.payload,
+            }
         case types.FETCH_FAILURE:
-            return console.log('FETCHING FAILURE!')
+            return {
+                ...state,
+                fetchingFriends: false,
+                error: action.payload,
+            }
         default:
             return state;
         }
